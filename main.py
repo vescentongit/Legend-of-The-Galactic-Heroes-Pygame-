@@ -109,7 +109,16 @@ class Beam(pygame.sprite.Sprite):
         self.updateSize(fullscreen)
         self.rect.y -= self.getSpeed(fullscreen)
         self.destroy()
-    
+
+
+def collision(beamGroup, meteorGroup):
+    for beam in beamGroup:
+        hit_meteors = pygame.sprite.spritecollide(beam, meteorGroup, False)
+        if hit_meteors:
+            for meteor in hit_meteors:
+                meteor.image = pygame.image.load('assets/explosion.png')
+                meteor.kill()
+                beam.kill()
 
 # WARSHIP GROUP
 warship = pygame.sprite.GroupSingle()
@@ -122,7 +131,7 @@ beamGroup = pygame.sprite.Group()
 meteorGroup = pygame.sprite.Group()
 
 obstacleTimer = pygame.USEREVENT + 1
-pygame.time.set_timer(obstacleTimer,1000)
+pygame.time.set_timer(obstacleTimer,500)
 
 # GAME LOOP
 while running:
@@ -162,8 +171,8 @@ while running:
             # BORDER HANDLER
             if warship.sprite.rect.left <= 0:
                 warship.sprite.rect.left = 0
-            if warship.sprite.rect.top <= (screen.get_height()*3/4):
-                warship.sprite.rect.top = screen.get_height()*3/4
+            if warship.sprite.rect.top <= (screen.get_height()*2/5):
+                warship.sprite.rect.top = screen.get_height()*2/5
             if warship.sprite.rect.right >= screen.get_width():
                 warship.sprite.rect.right = screen.get_width()
             if warship.sprite.rect.bottom >= screen.get_height():
@@ -175,9 +184,7 @@ while running:
     beamGroup.update()
     meteorGroup.draw(screen)
     meteorGroup.update()
-    
-    print(beamGroup)
-    
+    collision(beamGroup, meteorGroup)
     
     pygame.display.update()
     clock.tick(60)
