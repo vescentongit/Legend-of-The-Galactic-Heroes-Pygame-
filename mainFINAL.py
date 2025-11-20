@@ -260,7 +260,10 @@ while running:
                 if exitBtnRect.collidepoint(mousePos):
                     running = False
                 if startBtnRect.collidepoint(mousePos):
+                    start_time = int(pygame.time.get_ticks() / 120)
+                    destroyed = 0
                     gameState = 'game'
+                    
                     
         screen.blit(background,(0,0))
         screen.blit(title,titleRect)
@@ -294,8 +297,9 @@ while running:
                     beamGroup.add(Beam(warship.sprite.rect.midtop))
                 
                 if event.key == pygame.K_ESCAPE:
-                    gameState = 'menu'
                     score = displayScore()
+                    start_time = int(pygame.time.get_ticks() / 120)
+                    gameState = 'menu'
                 
                 
             # MOUSE EVENTS
