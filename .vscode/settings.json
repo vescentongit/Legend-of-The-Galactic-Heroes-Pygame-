@@ -1,0 +1,23 @@
+{
+    "window.zoomLevel": 0.6,
+    "editor.fontSize": 16,
+    "editor.wordWrap": "on",
+    "editor.inlineSuggest.enabled": false,
+    "background.enabled": true,
+    "background.fullscreen": {
+        "images": ["file:///C:/Users/Orkhan/Pictures/Wallpaper/1920x1080/cybercry.jpg"],
+        "opacity": 0.1,
+        "size": "cover",
+        "position": "center",
+        "interval": 0,
+        "random": false
+    },
+    "background.sidebar": {
+        "images": ["file:///C:/Users/Orkhan/Pictures/Wallpaper/Sidebar/Cyberpunk.jpg"],
+        "opacity": 0.2,
+        "size": "cover",
+        "position": "left",
+        "interval": 0,
+        "random": false
+    }
+}
