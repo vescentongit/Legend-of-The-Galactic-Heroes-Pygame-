@@ -1,8 +1,8 @@
 import pygame
 pygame.init()
 running = True
-
-
+def yesking():
+    return 'yesking'
 
 screen = pygame.display.set_mode((840,540))
 ship = pygame.image.load('assets/ship.png')
